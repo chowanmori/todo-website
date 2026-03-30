@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My To-Do Website</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>My To-Do List</h1>
+
+    <div class="theme-switcher">
+      <label for="themeSelect">Theme:</label>
+      <select id="themeSelect">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+
+    <div class="main-layout">
+      <div class="left-panel">
+        <div class="pomodoro">
+          <h2>Pomodoro Timer</h2>
+
+          <div class="timer-mode-buttons">
+            <button id="focusBtn">Focus</button>
+            <button id="shortBreakBtn">Short Break</button>
+          </div>
+
+          <div id="timerDisplay">25:00</div>
+
+          <div class="timer-controls">
+            <button id="startTimerBtn">Start</button>
+            <button id="pauseTimerBtn">Pause</button>
+            <button id="resetTimerBtn">Reset</button>
+          </div>
+        </div>
+
+        <div class="todo-input">
+          <input type="text" id="taskInput" placeholder="Enter a task..." />
+          <input type="date" id="taskDate" />
+          <button id="addTaskBtn">Add</button>
+        </div>
+
+        <div class="filters">
+          <button class="filter-btn active-filter" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="active">Active</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <p id="taskCounter">0 tasks left</p>
+
+        <h2>Task List</h2>
+        <ul id="taskList"></ul>
+
+        <h2>Inbox / No Due Date</h2>
+        <ul id="inboxList"></ul>
+      </div>
+
+      <div class="right-panel">
+        <h2>Calendar View</h2>
+
+        <div class="calendar-header">
+          <button id="prevMonthBtn">←</button>
+          <h3 id="calendarMonth"></h3>
+          <button id="nextMonthBtn">→</button>
+        </div>
+
+        <div class="calendar-weekdays">
+          <div>Sun</div>
+          <div>Mon</div>
+          <div>Tue</div>
+          <div>Wed</div>
+          <div>Thu</div>
+          <div>Fri</div>
+          <div>Sat</div>
+        </div>
+
+        <div id="calendarView" class="calendar-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
