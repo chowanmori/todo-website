@@ -506,13 +506,24 @@ body.dark-mode .timer-controls button:hover {
 }
 
 @media (max-width: 768px) {
-  .right-panel {
-    overflow-x: auto;
-  }
-
   .calendar-weekdays,
   .calendar-grid {
-    min-width: 560px;
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
+  }
+
+  .calendar-cell {
+    min-height: 60px;   /* smaller height */
+    padding: 4px;
+  }
+
+  .calendar-date {
+    font-size: 11px;
+  }
+
+  .calendar-task {
+    font-size: 9px;
+    padding: 2px 3px;
   }
 }
 
