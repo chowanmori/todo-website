@@ -506,25 +506,38 @@ body.dark-mode .timer-controls button:hover {
 }
 
 @media (max-width: 768px) {
-  .calendar-weekdays,
+
   .calendar-grid {
-    grid-template-columns: repeat(7, 1fr);
-    width: 100%;
+    gap: 2px;
+  }
+
+  .calendar-weekdays {
+    gap: 2px;
   }
 
   .calendar-cell {
-    min-height: 60px;   /* smaller height */
-    padding: 4px;
+    min-height: 50px;   /* 🔥 reduce more */
+    padding: 3px;
   }
 
   .calendar-date {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .calendar-task {
-    font-size: 9px;
-    padding: 2px 3px;
+    font-size: 8px;
+    padding: 2px;
   }
+
+  .container {
+  overflow-x: hidden;
+  }
+
+}
+
+.calendar-grid,
+.calendar-weekdays {
+  box-sizing: border-box;
 }
 
 .daily-progress {
