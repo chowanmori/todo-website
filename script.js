@@ -16,6 +16,9 @@ const startTimerBtn = document.getElementById("startTimerBtn");
 const pauseTimerBtn = document.getElementById("pauseTimerBtn");
 const resetTimerBtn = document.getElementById("resetTimerBtn");
 const timerDisplay = document.getElementById("timerDisplay");
+const dailyProgressBar = document.getElementById("dailyProgressBar");
+const dailyProgressText = document.getElementById("dailyProgressText");
+const overdueList = document.getElementById("overdueList");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let currentFilter = "all";
@@ -132,6 +135,26 @@ function updateTaskCounter() {
   } else {
     taskCounter.textContent = `${activeTasks} tasks left`;
   }
+}
+
+function updateDailyProgress() {
+  const today = new Date();
+  const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+
+  const todaysTasks = tasks.filter((task) => task.dueDate === todayString);
+  const completedTodayTasks = todaysTasks.filter((task) => task.completed);
+
+  const total = todaysTasks.length;
+  const completed = completedTodayTasks.length;
+
+  let percentage = 0;
+
+  if (total > 0) {
+    percentage = (completed / total) * 100;
+  }
+
+  dailyProgressBar.style.width = `${percentage}%`;
+  dailyProgressText.textContent = `${completed} / ${total} completed (${percentage.toFixed(1)}%)`;
 }
 
 function getFilteredTasks() {
@@ -251,16 +274,37 @@ function createTaskElement(task) {
   return li;
 }
 
+function getTodayString() {
+  const today = new Date();
+  return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+}
+
 function renderTasks() {
   taskList.innerHTML = "";
   inboxList.innerHTML = "";
+  overdueList.innerHTML = "";
+
   updateTaskCounter();
+  updateDailyProgress();
   renderCalendarView();
 
   const filteredTasks = getFilteredTasks();
+  const todayString = getTodayString();
 
-  const datedTasks = filteredTasks.filter((task) => task.dueDate);
+  const overdueTasks = filteredTasks.filter(
+    (task) => task.dueDate && task.dueDate < todayString && !task.completed
+  );
+
+  const datedTasks = filteredTasks.filter(
+    (task) => task.dueDate && task.dueDate >= todayString
+  );
+
   const undatedTasks = filteredTasks.filter((task) => !task.dueDate);
+
+  overdueTasks.forEach((task) => {
+    const li = createTaskElement(task);
+    overdueList.appendChild(li);
+  });
 
   datedTasks.forEach((task) => {
     const li = createTaskElement(task);
@@ -272,8 +316,12 @@ function renderTasks() {
     inboxList.appendChild(li);
   });
 
+  if (overdueTasks.length === 0) {
+    overdueList.innerHTML = "<li>No overdue tasks.</li>";
+  }
+
   if (datedTasks.length === 0) {
-    taskList.innerHTML = "<li>No dated tasks.</li>";
+    taskList.innerHTML = "<li>No upcoming or today's tasks.</li>";
   }
 
   if (undatedTasks.length === 0) {

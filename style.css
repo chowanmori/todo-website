@@ -515,3 +515,54 @@ body.dark-mode .timer-controls button:hover {
     min-width: 560px;
   }
 }
+
+.daily-progress {
+  margin: 16px 0 24px;
+}
+
+.daily-progress h3 {
+  margin-bottom: 8px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 20px;
+  background: #e5e5e5;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #4a90e2;
+  transition: width 0.3s ease;
+}
+
+#dailyProgressText {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+body.dark-mode .progress-bar-container {
+  background: #3a3a3a;
+}
+
+body.dark-mode #dailyProgressText {
+  color: #ccc;
+}
+
+#overdueList {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+#overdueList .task-item {
+  border-left: 4px solid #e74c3c;
+}
+
+body.dark-mode #overdueList .task-item {
+  border-left: 4px solid #ff6b6b;
+}
