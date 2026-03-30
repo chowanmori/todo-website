@@ -372,25 +372,25 @@ body.dark-mode .timer-controls button:hover {
 
 @media (max-width: 768px) {
   body {
-    padding: 16px;
+    padding: 12px;
   }
 
   .container {
     width: 100%;
     max-width: 100%;
-    padding: 16px;
+    padding: 12px; /* 🔥 reduced to prevent overflow */
     border-radius: 16px;
     box-sizing: border-box;
   }
 
   h1 {
-    font-size: 28px;
+    font-size: 26px;
     text-align: center;
     margin-bottom: 16px;
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .theme-switcher {
@@ -414,7 +414,7 @@ body.dark-mode .timer-controls button:hover {
   }
 
   #timerDisplay {
-    font-size: 56px;
+    font-size: 48px;
   }
 
   .timer-mode-buttons,
@@ -422,7 +422,7 @@ body.dark-mode .timer-controls button:hover {
   .filters {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
   }
 
   .timer-mode-buttons button,
@@ -430,15 +430,15 @@ body.dark-mode .timer-controls button:hover {
   .filter-btn,
   #addTaskBtn,
   .calendar-header button {
-    min-height: 44px;
-    padding: 10px 14px;
-    font-size: 14px;
+    min-height: 40px;
+    padding: 8px 12px;
+    font-size: 13px;
   }
 
   .todo-input {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
 
   #taskInput,
@@ -455,69 +455,46 @@ body.dark-mode .timer-controls button:hover {
   .task-item {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
   }
 
   .task-buttons {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
   }
 
   .task-buttons button {
     flex: 1 1 auto;
   }
 
+  /* ===== CALENDAR FIX (IMPORTANT PART) ===== */
+
   .calendar-header {
-    gap: 10px;
+    gap: 8px;
     align-items: center;
   }
 
   .calendar-header h3 {
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     flex: 1;
   }
 
-  .calendar-weekdays {
-    font-size: 12px;
-    gap: 4px;
-  }
-
+  .calendar-weekdays,
   .calendar-grid {
-    gap: 4px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px; /* 🔥 critical fix */
+    width: 100%;
+    max-width: 100%;
   }
 
   .calendar-cell {
-    min-height: 70px;
-    padding: 6px;
-  }
-
-  .calendar-date {
-    font-size: 12px;
-  }
-
-  .calendar-task {
-    font-size: 10px;
-    padding: 3px 4px;
-    margin-bottom: 3px;
-  }
-}
-
-@media (max-width: 768px) {
-
-  .calendar-grid {
-    gap: 2px;
-  }
-
-  .calendar-weekdays {
-    gap: 2px;
-  }
-
-  .calendar-cell {
-    min-height: 50px;   /* 🔥 reduce more */
+    min-height: 50px;  /* 🔥 smaller so it fits */
     padding: 3px;
+    overflow: hidden;  /* 🔥 prevents overflow */
   }
 
   .calendar-date {
@@ -527,14 +504,11 @@ body.dark-mode .timer-controls button:hover {
   .calendar-task {
     font-size: 8px;
     padding: 2px;
+    line-height: 1.2;
   }
-
-  .container {
-  overflow-x: hidden;
-  }
-
 }
 
+/* KEEP THIS OUTSIDE */
 .calendar-grid,
 .calendar-weekdays {
   box-sizing: border-box;
