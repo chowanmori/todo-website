@@ -369,3 +369,149 @@ body.dark-mode .timer-controls button:hover {
     flex-direction: column;
   }
 }
+
+@media (max-width: 768px) {
+  body {
+    padding: 16px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    border-radius: 16px;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .theme-switcher {
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .main-layout {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+  }
+
+  .pomodoro {
+    padding: 16px;
+  }
+
+  #timerDisplay {
+    font-size: 56px;
+  }
+
+  .timer-mode-buttons,
+  .timer-controls,
+  .filters {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .timer-mode-buttons button,
+  .timer-controls button,
+  .filter-btn,
+  #addTaskBtn,
+  .calendar-header button {
+    min-height: 44px;
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  .todo-input {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #taskInput,
+  #taskDate,
+  #addTaskBtn {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #taskCounter {
+    text-align: center;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .task-buttons {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .task-buttons button {
+    flex: 1 1 auto;
+  }
+
+  .calendar-header {
+    gap: 10px;
+    align-items: center;
+  }
+
+  .calendar-header h3 {
+    font-size: 18px;
+    text-align: center;
+    flex: 1;
+  }
+
+  .calendar-weekdays {
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .calendar-grid {
+    gap: 4px;
+  }
+
+  .calendar-cell {
+    min-height: 70px;
+    padding: 6px;
+  }
+
+  .calendar-date {
+    font-size: 12px;
+  }
+
+  .calendar-task {
+    font-size: 10px;
+    padding: 3px 4px;
+    margin-bottom: 3px;
+  }
+}
+
+@media (max-width: 768px) {
+  .right-panel {
+    overflow-x: auto;
+  }
+
+  .calendar-weekdays,
+  .calendar-grid {
+    min-width: 560px;
+  }
+}
