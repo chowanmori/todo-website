@@ -142,9 +142,13 @@ function updateTaskCounter() {
   }
 }
 
-function updateDailyProgress() {
+function getTodayString() {
   const today = new Date();
-  const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+  return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+}
+
+function updateDailyProgress() {
+  const todayString = getTodayString();
 
   const todaysTasks = tasks.filter((task) => task.dueDate === todayString);
   const completedTodayTasks = todaysTasks.filter((task) => task.completed);
@@ -192,8 +196,7 @@ function renderCalendarView() {
 
   const filteredTasks = getFilteredTasks().filter((task) => task.dueDate);
 
-  const today = new Date();
-  const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+  const todayString = getTodayString();
 
   for (let i = 0; i < firstDayOfMonth; i++) {
     const emptyCell = document.createElement("div");
@@ -217,7 +220,6 @@ function renderCalendarView() {
 
     cell.addEventListener("click", () => {
       selectedDate = dayString;
-      taskDate.value = dayString;
       taskInput.focus();
       renderCalendarView();
       openDayModal(dayString);
@@ -278,11 +280,6 @@ function createTaskElement(task) {
   li.appendChild(buttonGroup);
 
   return li;
-}
-
-function getTodayString() {
-  const today = new Date();
-  return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
 }
 
 function renderTasks() {
@@ -478,6 +475,10 @@ function openDayModal(dateString) {
 }
 
 function closeModal() {
+  if (!dayModal) {
+    return;
+  }
+
   dayModal.classList.add("hidden");
 }
 
@@ -523,9 +524,11 @@ themeSelect.addEventListener("change", () => {
   applyTheme(selectedTheme);
 });
 
-clearDateBtn.addEventListener("click", () => {
-  taskDate.value = "";
-});
+if (clearDateBtn) {
+  clearDateBtn.addEventListener("click", () => {
+    taskDate.value = "";
+  });
+}
 
 focusBtn.addEventListener("click", setFocusMode);
 shortBreakBtn.addEventListener("click", setShortBreakMode);
