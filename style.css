@@ -624,6 +624,31 @@ body.ghibli-theme .progress-bar-fill {
   }
 }
 
+.theme-decor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.leaf {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0;
+}
+
+body.ghibli-theme .theme-decor {
+  display: block;
+}
+
+body:not(.ghibli-theme) .theme-decor {
+  display: none;
+}
+
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 900px) {
@@ -795,4 +820,46 @@ body.ghibli-theme .progress-bar-fill {
     text-align: center;
     font-size: 13px;
   }
+}
+
+@keyframes floatLeaf {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(40vh) translateX(20px) rotate(120deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(110vh) translateX(-20px) rotate(240deg);
+    opacity: 0;
+  }
+}
+
+.leaf-1 {
+  left: 10%;
+  animation: floatLeaf 12s linear infinite;
+  animation-delay: 0s;
+}
+
+.leaf-2 {
+  left: 30%;
+  animation: floatLeaf 16s linear infinite;
+  animation-delay: 3s;
+}
+
+.leaf-3 {
+  left: 60%;
+  animation: floatLeaf 14s linear infinite;
+  animation-delay: 6s;
+}
+
+.leaf-4 {
+  left: 80%;
+  animation: floatLeaf 18s linear infinite;
+  animation-delay: 2s;
 }
