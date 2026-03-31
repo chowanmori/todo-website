@@ -557,9 +557,10 @@ body.dark-mode .modal-content {
 /* ===== GHIBLI THEME ===== */
 
 body.ghibli-theme {
-  background: url("anime-character-traveling.jpg") no-repeat center center fixed;
+  background: url("anime-character-traveling.png") no-repeat center center fixed;
   background-size: cover;
   color: #2f3e2f;
+  min-height: 100vh;
 }
 
 /* overlay for readability */
@@ -595,7 +596,7 @@ body.ghibli-theme .pomodoro {
 body.ghibli-theme button {
   background: #a8d5ba;
   color: #2f3e2f;
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 body.ghibli-theme button:hover {
@@ -615,6 +616,12 @@ body.ghibli-theme .calendar-cell:hover {
 /* progress bar */
 body.ghibli-theme .progress-bar-fill {
   background: #6aa67a;
+}
+
+@media (max-width: 768px) {
+  body.ghibli-theme {
+    background-attachment: scroll;
+  }
 }
 
 /* ===== RESPONSIVE ===== */
