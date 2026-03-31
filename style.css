@@ -563,6 +563,12 @@ body.ghibli-theme {
   min-height: 100vh;
 }
 
+@media (max-width: 768px) {
+  body.ghibli-theme {
+    background-attachment: scroll;
+  }
+}
+
 /* overlay for readability */
 body.ghibli-theme::before {
   content: "";
@@ -576,54 +582,7 @@ body.ghibli-theme::before {
   z-index: 0;
 }
 
-/* container glass effect */
-body.ghibli-theme .container {
-  position: relative;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-  border-radius: 16px;
-}
-
-/* softer UI */
-body.ghibli-theme .task-item,
-body.ghibli-theme .calendar-cell,
-body.ghibli-theme .pomodoro {
-  background: rgba(255, 255, 255, 0.8);
-}
-
-/* buttons */
-body.ghibli-theme button {
-  background: #a8d5ba;
-  color: #2f3e2f;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-body.ghibli-theme button:hover {
-  background: #92c9a8;
-  transform: translateY(-1px);
-}
-
-/* calendar highlight */
-body.ghibli-theme .calendar-cell.today {
-  border: 2px solid #6aa67a;
-}
-
-body.ghibli-theme .calendar-cell:hover {
-  background: rgba(255, 255, 255, 0.9);
-}
-
-/* progress bar */
-body.ghibli-theme .progress-bar-fill {
-  background: #6aa67a;
-}
-
-@media (max-width: 768px) {
-  body.ghibli-theme {
-    background-attachment: scroll;
-  }
-}
-
+/* animated decor layer */
 .theme-decor {
   position: fixed;
   top: 0;
@@ -647,6 +606,95 @@ body.ghibli-theme .theme-decor {
 
 body:not(.ghibli-theme) .theme-decor {
   display: none;
+}
+
+/* fonts */
+body {
+  font-family: "Quicksand", Arial, sans-serif;
+}
+
+body.ghibli-theme h1,
+body.ghibli-theme h2,
+body.ghibli-theme h3 {
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: 0.5px;
+}
+
+body.ghibli-theme button,
+body.ghibli-theme .date-label,
+body.ghibli-theme #taskCounter,
+body.ghibli-theme #dailyProgressText {
+  font-family: "Quicksand", Arial, sans-serif;
+}
+
+/* container glass effect */
+body.ghibli-theme .container {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(40, 60, 40, 0.12);
+}
+
+/* themed cards */
+body.ghibli-theme .pomodoro,
+body.ghibli-theme .task-item,
+body.ghibli-theme .calendar-cell,
+body.ghibli-theme .modal-content,
+body.ghibli-theme .daily-progress {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(120, 160, 120, 0.18);
+  box-shadow: 0 8px 20px rgba(70, 90, 70, 0.08);
+}
+
+/* buttons */
+body.ghibli-theme button {
+  background: #a8d5ba;
+  color: #2f3e2f;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.ghibli-theme button:hover {
+  background: #92c9a8;
+  transform: translateY(-1px);
+}
+
+/* calendar states */
+
+body.ghibli-theme .calendar-cell,
+body.ghibli-theme .task-item {
+  transition: all 0.2s ease;
+}
+
+body.ghibli-theme .calendar-cell.today {
+  border: 2px solid #6aa67a;
+  background: rgba(200, 230, 200, 0.4);
+}
+
+body.ghibli-theme .calendar-cell.selected {
+  background: rgba(160, 210, 170, 0.35);
+  border: 2px solid #7fb77e;
+}
+
+body.ghibli-theme .calendar-cell:hover {
+  background: rgba(210, 235, 210, 0.6);
+  box-shadow: 0 10px 24px rgba(70, 90, 70, 0.12);
+}
+
+body.ghibli-theme .task-item:hover {
+  box-shadow: 0 10px 24px rgba(70, 90, 70, 0.12);
+}
+
+/* progress bar */
+
+body.ghibli-theme .progress-bar-container {
+  background: rgba(170, 210, 180, 0.35);
+  border: 1px solid rgba(90, 130, 100, 0.15);
+}
+
+body.ghibli-theme .progress-bar-fill {
+  background: linear-gradient(90deg, #7fb77e, #a5d6a7);
 }
 
 /* ===== RESPONSIVE ===== */
