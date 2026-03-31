@@ -49,24 +49,31 @@
         </div>
 
         <div class="todo-input">
-          <input type="text" id="taskInput" placeholder="Enter a task..." />
-
-          <div class="date-group">
-            <label for="taskDate" class="date-label">Due date</label>
-            <input type="date" id="taskDate" />
-            <button type="button" id="clearDateBtn">Clear Date</button>
+          <div class="task-main-row">
+            <input type="text" id="taskInput" placeholder="Enter a task..." />
+            <button id="addTaskBtn">Add</button>
           </div>
 
-          <div class="priority-group">
-            <label for="taskPriority" class="priority-label">Priority</label>
-            <select id="taskPriority">
-              <option value="low">🟢 Low</option>
-              <option value="medium">🟡 Medium</option>
-              <option value="high">🔴 High</option>
-            </select>
-          </div>
+          <div class="task-meta-row">
+            <div class="date-group">
+              <label for="taskDate" class="date-label">Due date</label>
+              <input type="date" id="taskDate" />
+            </div>
 
-          <button id="addTaskBtn">Add</button>
+            <div class="clear-group">
+              <label class="date-label">&nbsp;</label>
+              <button type="button" id="clearDateBtn">Clear Date</button>
+            </div>
+
+            <div class="priority-group">
+              <label for="taskPriority" class="priority-label">Priority</label>
+              <select id="taskPriority">
+                <option value="low">🟢 Low</option>
+                <option value="medium">🟡 Medium</option>
+                <option value="high">🔴 High</option>
+              </select>
+            </div>
+          </div>
         </div>
 
         <div class="filters">
