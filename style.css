@@ -799,7 +799,6 @@ body.ghibli-theme #taskPriority {
   border: 1px solid rgba(120, 160, 120, 0.2);
 }
 
-
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 900px) {
@@ -811,15 +810,6 @@ body.ghibli-theme #taskPriority {
 @media (max-width: 768px) {
   body {
     padding: 12px;
-  }
-  
-  body.ghibli-theme .daily-progress {
-    padding: 14px;
-    border-radius: 18px;
-  }
-
-  body.ghibli-theme .progress-bar-container {
-    height: 16px;
   }
 
   .container {
@@ -875,6 +865,7 @@ body.ghibli-theme #taskPriority {
   .timer-controls button,
   .filter-btn,
   #addTaskBtn,
+  #clearDateBtn,
   .calendar-header button {
     min-height: 40px;
     padding: 8px 12px;
@@ -882,16 +873,35 @@ body.ghibli-theme #taskPriority {
   }
 
   .todo-input {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
 
   .task-main-row,
   .task-meta-row {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 100%;
+  }
+
+  .date-group,
+  .priority-group,
+  .clear-group {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .date-label,
+  .priority-label {
+    display: block;
+    text-align: left;
+    margin-bottom: 4px;
   }
 
   #taskInput,
@@ -903,6 +913,11 @@ body.ghibli-theme #taskPriority {
     max-width: 100%;
     min-width: 0;
     box-sizing: border-box;
+  }
+
+  #taskDate,
+  #taskPriority {
+    min-height: 44px;
   }
 
   #taskDate {
@@ -986,16 +1001,13 @@ body.ghibli-theme #taskPriority {
     font-size: 13px;
   }
 
-  .priority-group {
-  width: 100%;
-  min-width: 0;
+  body.ghibli-theme .daily-progress {
+    padding: 14px;
+    border-radius: 18px;
   }
 
-  #taskPriority {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
+  body.ghibli-theme .progress-bar-container {
+    height: 16px;
   }
 }
 
