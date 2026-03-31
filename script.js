@@ -455,8 +455,11 @@ function setFilter(filter) {
 }
 
 function openDayModal(dateString) {
-  modalTaskList.innerHTML = "";
+  if (!dayModal || !modalTaskList || !modalDateTitle) {
+    return;
+  }
 
+  modalTaskList.innerHTML = "";
   modalDateTitle.textContent = dateString;
 
   const dayTasks = tasks.filter((task) => task.dueDate === dateString);
@@ -477,13 +480,17 @@ function closeModal() {
   dayModal.classList.add("hidden");
 }
 
-closeModalBtn.addEventListener("click", closeModal);
+if (closeModalBtn) {
+  closeModalBtn.addEventListener("click", closeModal);
+}
 
-dayModal.addEventListener("click", (e) => {
-  if (e.target === dayModal) {
-    closeModal();
-  }
-});
+if (dayModal) {
+  dayModal.addEventListener("click", (e) => {
+    if (e.target === dayModal) {
+      closeModal();
+    }
+  });
+}
 
 prevMonthBtn.addEventListener("click", () => {
   currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
