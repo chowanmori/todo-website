@@ -643,9 +643,12 @@ body.ghibli-theme .task-item,
 body.ghibli-theme .calendar-cell,
 body.ghibli-theme .modal-content,
 body.ghibli-theme .daily-progress {
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(120, 160, 120, 0.18);
-  box-shadow: 0 8px 20px rgba(70, 90, 70, 0.08);
+  background: rgba(255, 255, 255, 0.45);   /* softer */
+  backdrop-filter: blur(10px);             /* glass effect */
+  border-radius: 16px;                     /* rounded */
+  padding: 16px;
+  border: 1px solid rgba(120, 160, 120, 0.15);
+  box-shadow: 0 6px 18px rgba(70, 90, 70, 0.08);
 }
 
 /* buttons */
@@ -696,6 +699,7 @@ body.ghibli-theme .progress-bar-container {
 body.ghibli-theme .progress-bar-fill {
   background: linear-gradient(90deg, #7fb77e, #a5d6a7);
 }
+
 
 /* ===== RESPONSIVE ===== */
 
