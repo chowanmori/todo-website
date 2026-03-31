@@ -28,16 +28,21 @@ h3 {
 
 .main-layout {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   align-items: flex-start;
 }
 
 .left-panel {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .right-panel {
   flex: 1.5;
+  min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* force left panel sections to stack nicely */
@@ -55,6 +60,23 @@ h3 {
 .filters,
 .todo-input {
   width: 100%;
+}
+
+.pomodoro {
+  margin: 20px 0 30px;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 12px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.calendar-header,
+.calendar-weekdays,
+.calendar-grid {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ===== THEME ===== */
@@ -530,6 +552,69 @@ body.dark-mode #overdueList .task-item {
 body.dark-mode .modal-content {
   background: #2a2a2a;
   color: white;
+}
+
+/* ===== GHIBLI THEME ===== */
+
+body.ghibli-theme {
+  background: url("images/anime-character-traveling.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #2f3e2f;
+}
+
+/* overlay for readability */
+body.ghibli-theme::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* container glass effect */
+body.ghibli-theme .container {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+}
+
+/* softer UI */
+body.ghibli-theme .task-item,
+body.ghibli-theme .calendar-cell,
+body.ghibli-theme .pomodoro {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* buttons */
+body.ghibli-theme button {
+  background: #a8d5ba;
+  color: #2f3e2f;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+body.ghibli-theme button:hover {
+  background: #92c9a8;
+  transform: translateY(-1px);
+}
+
+/* calendar highlight */
+body.ghibli-theme .calendar-cell.today {
+  border: 2px solid #6aa67a;
+}
+
+body.ghibli-theme .calendar-cell:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* progress bar */
+body.ghibli-theme .progress-bar-fill {
+  background: #6aa67a;
 }
 
 /* ===== RESPONSIVE ===== */

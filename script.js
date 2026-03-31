@@ -40,10 +40,14 @@ function saveTasks() {
 }
 
 function applyTheme(theme) {
+  document.body.classList.remove("dark-mode", "ghibli-theme");
+
   if (theme === "dark") {
     document.body.classList.add("dark-mode");
-  } else {
-    document.body.classList.remove("dark-mode");
+  }
+
+  if (theme === "ghibli") {
+    document.body.classList.add("ghibli-theme");
   }
 }
 
