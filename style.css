@@ -557,7 +557,7 @@ body.dark-mode .modal-content {
 /* ===== GHIBLI THEME ===== */
 
 body.ghibli-theme {
-  background: url("anime-character-traveling.png") no-repeat center center fixed;
+  background: url("anime-character-traveling.jpg") no-repeat center center fixed;
   background-size: cover;
   color: #2f3e2f;
   min-height: 100vh;
