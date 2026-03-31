@@ -42,6 +42,11 @@ h1 {
   color: #555;
 }
 
+.date-label {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
 .filters {
   display: flex;
   gap: 10px;
@@ -445,7 +450,17 @@ body.dark-mode .timer-controls button:hover {
   #taskDate,
   #addTaskBtn {
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     box-sizing: border-box;
+  }
+
+  #taskDate {
+    width: 100%;
+    min-width: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 8px;
   }
 
   #taskCounter {
@@ -563,4 +578,11 @@ body.dark-mode #dailyProgressText {
 
 body.dark-mode #overdueList .task-item {
   border-left: 4px solid #ff6b6b;
+}
+
+#taskDate {
+  padding: 10px;
+  font-size: 16px;
+  min-height: 44px;
+  box-sizing: border-box;
 }

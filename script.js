@@ -361,6 +361,25 @@ function toggleTask(id) {
   renderTasks();
 }
 
+function isValidDateString(dateString) {
+  if (dateString === "") {
+    return true;
+  }
+
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+    return false;
+  }
+
+  const [year, month, day] = dateString.split("-").map(Number);
+  const date = new Date(year, month - 1, day);
+
+  return (
+    date.getFullYear() === year &&
+    date.getMonth() === month - 1 &&
+    date.getDate() === day
+  );
+}
+
 function editTask(id) {
   const taskToEdit = tasks.find((task) => task.id === id);
 
@@ -391,11 +410,8 @@ function editTask(id) {
 
   const trimmedDueDate = newDueDate.trim();
 
-  const isValidDate =
-    trimmedDueDate === "" || /^\d{4}-\d{2}-\d{2}$/.test(trimmedDueDate);
-
-  if (!isValidDate) {
-    alert("Please use date format YYYY-MM-DD.");
+  if (!isValidDateString(trimmedDueDate)) {
+    alert("Please enter a real date in YYYY-MM-DD format.");
     return;
   }
 
