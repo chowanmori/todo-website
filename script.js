@@ -19,6 +19,10 @@ const timerDisplay = document.getElementById("timerDisplay");
 const dailyProgressBar = document.getElementById("dailyProgressBar");
 const dailyProgressText = document.getElementById("dailyProgressText");
 const overdueList = document.getElementById("overdueList");
+const dayModal = document.getElementById("dayModal");
+const modalTaskList = document.getElementById("modalTaskList");
+const modalDateTitle = document.getElementById("modalDateTitle");
+const closeModalBtn = document.getElementById("closeModalBtn");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let currentFilter = "all";
@@ -215,6 +219,7 @@ function renderCalendarView() {
       taskDate.value = dayString;
       taskInput.focus();
       renderCalendarView();
+      openDayModal(dayString);
     });
 
     const dateLabel = document.createElement("div");
@@ -448,6 +453,37 @@ function setFilter(filter) {
 
   renderTasks();
 }
+
+function openDayModal(dateString) {
+  modalTaskList.innerHTML = "";
+
+  modalDateTitle.textContent = dateString;
+
+  const dayTasks = tasks.filter((task) => task.dueDate === dateString);
+
+  if (dayTasks.length === 0) {
+    modalTaskList.innerHTML = "<li>No tasks for this day.</li>";
+  } else {
+    dayTasks.forEach((task) => {
+      const li = createTaskElement(task);
+      modalTaskList.appendChild(li);
+    });
+  }
+
+  dayModal.classList.remove("hidden");
+}
+
+function closeModal() {
+  dayModal.classList.add("hidden");
+}
+
+closeModalBtn.addEventListener("click", closeModal);
+
+dayModal.addEventListener("click", (e) => {
+  if (e.target === dayModal) {
+    closeModal();
+  }
+});
 
 prevMonthBtn.addEventListener("click", () => {
   currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
