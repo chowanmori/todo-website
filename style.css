@@ -23,6 +23,37 @@ h1 {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  align-items: flex-end;
+}
+
+#taskInput {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.date-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.date-label {
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+#taskDate {
+  padding: 10px;
+  font-size: 16px;
+  min-height: 42px;
+  box-sizing: border-box;
+}
+
+#clearDateBtn {
+  padding: 6px 10px;
+  font-size: 13px;
+  cursor: pointer;
 }
 
 #taskInput {
@@ -40,11 +71,6 @@ h1 {
   text-align: center;
   margin-bottom: 16px;
   color: #555;
-}
-
-.date-label {
-  font-size: 14px;
-  margin-bottom: 4px;
 }
 
 .filters {
@@ -578,13 +604,6 @@ body.dark-mode #dailyProgressText {
 
 body.dark-mode #overdueList .task-item {
   border-left: 4px solid #ff6b6b;
-}
-
-#taskDate {
-  padding: 10px;
-  font-size: 16px;
-  min-height: 44px;
-  box-sizing: border-box;
 }
 
 /* ===== MODAL ===== */

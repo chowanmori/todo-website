@@ -23,6 +23,7 @@ const dayModal = document.getElementById("dayModal");
 const modalTaskList = document.getElementById("modalTaskList");
 const modalDateTitle = document.getElementById("modalDateTitle");
 const closeModalBtn = document.getElementById("closeModalBtn");
+const clearDateBtn = document.getElementById("clearDateBtn");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let currentFilter = "all";
@@ -520,6 +521,10 @@ themeSelect.addEventListener("change", () => {
   const selectedTheme = themeSelect.value;
   localStorage.setItem("theme", selectedTheme);
   applyTheme(selectedTheme);
+});
+
+clearDateBtn.addEventListener("click", () => {
+  taskDate.value = "";
 });
 
 focusBtn.addEventListener("click", setFocusMode);

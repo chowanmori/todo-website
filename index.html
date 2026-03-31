@@ -39,8 +39,16 @@
 
         <div class="todo-input">
           <input type="text" id="taskInput" placeholder="Enter a task..." />
-          <label for="taskDate" class="date-label">Due date</label>
-          <input type="date" id="taskDate" />
+
+          <div class="date-group">
+            <label for="taskDate" class="date-label">Due date</label>
+            <input type="date" id="taskDate" />
+            <button type="button" id="clearDateBtn">Clear Date</button>
+          </div>
+
+          <button id="addTaskBtn">Add</button>
+        </div>
+
           <button id="addTaskBtn">Add</button>
         </div>
 
