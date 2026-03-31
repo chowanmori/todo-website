@@ -24,6 +24,7 @@ const modalTaskList = document.getElementById("modalTaskList");
 const modalDateTitle = document.getElementById("modalDateTitle");
 const closeModalBtn = document.getElementById("closeModalBtn");
 const clearDateBtn = document.getElementById("clearDateBtn");
+const taskPriority = document.getElementById("taskPriority");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let currentFilter = "all";
@@ -240,7 +241,13 @@ function renderCalendarView() {
     tasksForDay.forEach((task) => {
       const taskDiv = document.createElement("div");
       taskDiv.className = task.completed ? "calendar-task completed" : "calendar-task";
-      taskDiv.textContent = task.text;
+
+      const priority = task.priority || "low";
+      let icon = "🟢";
+      if (priority === "medium") icon = "🟡";
+      if (priority === "high") icon = "🔴";
+
+      taskDiv.textContent = `${icon} ${task.text}`;
       cell.appendChild(taskDiv);
     });
 
@@ -252,13 +259,20 @@ function createTaskElement(task) {
   const li = document.createElement("li");
   li.className = "task-item";
 
+  const priority = task.priority || "low";
+  li.classList.add(priority);
+
   const span = document.createElement("span");
   span.className = task.completed ? "task-text completed" : "task-text";
 
+  let priorityIcon = "🟢";
+  if (priority === "medium") priorityIcon = "🟡";
+  if (priority === "high") priorityIcon = "🔴";
+
   if (task.dueDate) {
-    span.textContent = `${task.text} (Due: ${task.dueDate})`;
+    span.textContent = `${priorityIcon} ${task.text} (Due: ${task.dueDate})`;
   } else {
-    span.textContent = task.text;
+    span.textContent = `${priorityIcon} ${task.text}`;
   }
 
   const buttonGroup = document.createElement("div");
@@ -339,6 +353,7 @@ function renderTasks() {
 function addTask() {
   const text = taskInput.value.trim();
   const dueDate = taskDate.value;
+  const priority = taskPriority.value;
 
   if (text === "") {
     return;
@@ -348,7 +363,8 @@ function addTask() {
     id: Date.now(),
     text: text,
     completed: false,
-    dueDate: dueDate || ""
+    dueDate: dueDate || "",
+    priority: priority
   };
 
   tasks.push(newTask);
@@ -357,6 +373,7 @@ function addTask() {
 
   taskInput.value = "";
   taskDate.value = "";
+  taskPriority.value = "low";
 }
 
 function toggleTask(id) {
@@ -422,12 +439,30 @@ function editTask(id) {
     return;
   }
 
+  const newPriority = prompt(
+    "Edit priority (low / medium / high):",
+    taskToEdit.priority || "low"
+  );
+
+  if (newPriority === null) {
+    return;
+  }
+
+  const trimmedPriority = newPriority.trim().toLowerCase();
+  const validPriorities = ["low", "medium", "high"];
+
+  if (!validPriorities.includes(trimmedPriority)) {
+    alert("Priority must be: low, medium, or high.");
+    return;
+  }
+
   tasks = tasks.map((task) =>
     task.id === id
       ? {
           ...task,
           text: trimmedText,
-          dueDate: trimmedDueDate
+          dueDate: trimmedDueDate,
+          priority: trimmedPriority
         }
       : task
   );

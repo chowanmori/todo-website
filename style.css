@@ -79,6 +79,40 @@ h3 {
   box-sizing: border-box;
 }
 
+.priority-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 140px;
+}
+
+.priority-label {
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+#taskPriority {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  min-height: 42px;
+  box-sizing: border-box;
+}
+
+/* ===== PRIORITY ===== */
+
+.task-item.high {
+  border-left: 4px solid #e74c3c;
+}
+
+.task-item.medium {
+  border-left: 4px solid #f1c40f;
+}
+
+.task-item.low {
+  border-left: 4px solid #2ecc71;
+}
+
 /* ===== THEME ===== */
 
 .theme-switcher {
@@ -97,32 +131,37 @@ h3 {
 /* ===== TASK INPUT ===== */
 
 .todo-input {
-  display: flex;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr auto;
+  gap: 12px;
+  align-items: end;
   margin-bottom: 20px;
-  align-items: flex-end;
 }
 
 #taskInput {
-  flex: 1;
+  width: 100%;
   min-width: 0;
   padding: 10px;
   font-size: 16px;
+  box-sizing: border-box;
 }
 
-.date-group {
+.date-group,
+.priority-group {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  min-width: 160px;
+  min-width: 0;
 }
 
-.date-label {
+.date-label,
+.priority-label {
   font-size: 14px;
   line-height: 1.2;
 }
 
-#taskDate {
+#taskDate,
+#taskPriority {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -139,7 +178,8 @@ h3 {
 #addTaskBtn {
   padding: 10px 16px;
   cursor: pointer;
-  align-self: flex-end;
+  align-self: end;
+  white-space: nowrap;
 }
 
 /* ===== FILTERS ===== */
@@ -720,6 +760,18 @@ body.ghibli-theme .progress-bar-fill {
   box-sizing: border-box;
 }
 
+body.ghibli-theme .task-item.high {
+  border-left: 4px solid #d96c6c;
+}
+
+body.ghibli-theme .task-item.medium {
+  border-left: 4px solid #d8c36a;
+}
+
+body.ghibli-theme .task-item.low {
+  border-left: 4px solid #7fb77e;
+}
+
 
 /* ===== RESPONSIVE ===== */
 
@@ -803,17 +855,20 @@ body.ghibli-theme .progress-bar-fill {
   }
 
   .todo-input {
+    display: flex;
     flex-direction: column;
     gap: 10px;
   }
 
-  .date-group {
+  .date-group,
+  .priority-group {
     width: 100%;
     min-width: 0;
   }
 
   #taskInput,
   #taskDate,
+  #taskPriority,
   #addTaskBtn {
     width: 100%;
     max-width: 100%;
@@ -900,6 +955,18 @@ body.ghibli-theme .progress-bar-fill {
   #dailyProgressText {
     text-align: center;
     font-size: 13px;
+  }
+
+  .priority-group {
+  width: 100%;
+  min-width: 0;
+  }
+
+  #taskPriority {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
 }
 
